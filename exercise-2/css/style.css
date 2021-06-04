@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
+html body {
+    background: #ffffff;
+    color: #333;
+    font-family: Lato, sans-serif;
+}
+
+.container {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 34rem;
+    margin: 100px auto;
+    overflow: hidden;
+}
+
+html body ul {
+    margin: 0px;
+    padding: 0;
+}
+
+html body li,
+html body h3 {
+    list-style: none;
+}
+
+html body input,
+html body button {
+    outline: none;
+}
+
+html body button {
+    background: none;
+    border: 0;
+    color: #888888;
+    font-size: 1.1rem;
+    width: 60px;
+    margin: 0.7rem 0 0;
+    font-family: Lato, sans-serif;
+    cursor: pointer;
+}
+
+html body button:hover {
+    color: #333;
+}
+
+html body button:focus {
+    color: #000;
+}
+
+/* Heading */
+html body h3,
+html body label[for='new-task'] {
+    color: #333333;
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: 2px solid #333;
+    padding: 2.15rem 0 0.7rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+html body input[type='text'] {
+    margin: 0;
+    font-size: 1.28rem;
+    line-height: 1.28rem;
+    height: 1.28rem;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 0.4rem;
+    font-family: Lato, sans-serif;
+    color: #888;
+}
+
+html body input[type='text']:focus {
+    color: #333;
+}
+
+/* New Task */
+html body input#new-task {
+    width: 54.5%;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header > label {
+    width: 100%;
+}
+html body header>button:hover {
+    color: #0fc57c;
+}
+
+/* Task list */
+html body li {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px 0px;
+    border-bottom: 1px solid #eee;
+}
+
+html body li input[type='checkbox'] {
+    margin: 0 10px;
+}
+
+html body li>label {
+    display: flex;
+    align-items: center;
+    font-size: 1.28rem;
+    line-height: 2.85rem;
+    width: 50%;
+    max-width: 237px;
+    padding: 0 0 0 0.75rem;
+}
+
+html body li>input[type='text'] {
+    max-width: 226px;
+    width: 70%;
+}
+
+html body li>.delete:hover {
+    color: #cf2323;
+}
+
+/* Completed */
+html body #completed-tasks label {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Edit Task */
+html body ul li input[type='text'] {
+    display: none;
+}
+
+html body ul li.editMode input[type='text'] {
+    display: block;
+}
+
+html body ul li.editMode label {
+    display: none;
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 10px;
+    }
+    .container {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+}
