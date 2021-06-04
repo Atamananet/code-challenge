@@ -5,13 +5,10 @@
   const completedTasksHolder = document.querySelector('#completed-tasks');
 
   const serialize = () => {
-    const incompletedValues = [...incompleteTasksHolder.children].map(
-      (listItem) => listItem.children[0].innerText,
-    );
-
-    const completedValues = [...completedTasksHolder.children].map(
-      (listItem) => listItem.children[0].innerText,
-    );
+    const getInnerText = (node) => node.children[0].innerText;
+    
+    const incompletedValues = [...incompleteTasksHolder.children].map(getInnerText);
+    const completedValues = [...completedTasksHolder.children].map(getInnerText);
 
     const state = {
       incompletedValues,
@@ -25,7 +22,7 @@
     }
   };
 
-  const desserialize = () => {
+  const deserialize = () => {
     const storedState = localStorage.getItem('state');
     if (!storedState) {
       return;
@@ -138,15 +135,7 @@
   addButton.addEventListener('click', addTask);
 
   document.addEventListener('DOMContentLoaded', () => {
-    desserialize();
+    deserialize();
     setInterval(serialize, 1000);
-
-    [...incompleteTasksHolder.children].forEach((incompleteTask) => {
-      bindTaskEvents(incompleteTask);
-    });
-
-    [...completedTasksHolder.children].forEach((completedTask) => {
-      bindTaskEvents(completedTask);
-    });
   });
 })();
