@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+body {
+    background: #E5E5E5;
+}
+
 #data-details {
     margin: 10px auto 0 auto;
 }
@@ -14,15 +18,15 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-
+    max-width: 960px;
+    margin: auto;
+    
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1rem;
-    
     color: #424968;
-    background: #E5E5E5;
 }
 
 .user {
