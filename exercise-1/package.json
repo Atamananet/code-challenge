@@ -1,0 +1,19 @@
+{
+  "name": "exercise-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data-script.js",
+  "scripts": {
+    "test": "npx jest --env=jsdom",
+    "start": "node index"
+  },
+  "author": "Vladimir Storozhenko",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "jsdom": "^16.6.0"
+  }
+}
