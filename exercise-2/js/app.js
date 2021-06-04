@@ -76,6 +76,7 @@
 
     if (!listItemName) {
       taskInput.placeholder = 'Add some task name';
+      taskInput.focus();
       return;
     }
 
@@ -97,7 +98,7 @@
     const editInput = el.querySelector('input[type=text]');
     const label = el.querySelector('label');
     const button = el.querySelector('button');
-
+    
     const containsClass = el.classList.contains('editMode');
     if (containsClass) {
       const checkBox = label.children[0];
@@ -108,7 +109,7 @@
       editInput.value = label.innerText;
       button.innerText = 'Save';
     }
-
+    
     el.classList.toggle('editMode');
   };
 
@@ -129,9 +130,9 @@
     const editButton = taskListItem.querySelector('button.edit');
     const deleteButton = taskListItem.querySelector('button.delete');
 
-    editButton.addEventListener('click', editTask(taskListItem));
-    deleteButton.addEventListener('click', deleteTask(taskListItem));
-    checkBox.addEventListener('click', toggleCompletion(taskListItem));
+    editButton.onclick = editTask(taskListItem);
+    deleteButton.onclick = deleteTask(taskListItem);
+    checkBox.onclick = toggleCompletion(taskListItem);
   };
 
   addButton.addEventListener('click', addTask);

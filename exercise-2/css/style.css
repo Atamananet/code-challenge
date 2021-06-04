@@ -1,13 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 14px;
+}
+
 html body {
     background: #ffffff;
     color: #333;
     font-family: Lato, sans-serif;
 }
 
-html body .container {
+.container {
     display: block;
-    width: 600px;
-    margin: 100px auto 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 34rem;
+    margin: 100px auto;
+    overflow: hidden;
 }
 
 html body ul {
@@ -15,13 +27,8 @@ html body ul {
     padding: 0;
 }
 
-html body li * {
-    float: left;
-}
-
 html body li,
 html body h3 {
-    clear: both;
     list-style: none;
 }
 
@@ -31,26 +38,22 @@ html body button {
 }
 
 html body button {
-    background: #113d7e;
-    border: 0px;
-    color: #ffffff;
-    font-size: 15px;
+    background: none;
+    border: 0;
+    color: #888888;
+    font-size: 1.1rem;
     width: 60px;
-    padding: 10px;
-    margin: 0 5px;
-    border-radius: 5px;
+    margin: 0.7rem 0 0;
     font-family: Lato, sans-serif;
     cursor: pointer;
 }
 
 html body button:hover {
-    background: #3268b9;
-    color: rgb(209, 208, 208);
+    color: #333;
 }
 
-button:focus,
-input:focus {
-    box-shadow: #333 2px 2px 7px;
+html body button:focus {
+    color: #000;
 }
 
 /* Heading */
@@ -58,22 +61,22 @@ html body h3,
 html body label[for='new-task'] {
     color: #333333;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 1rem;
     border-bottom: 2px solid #333;
-    padding: 30px 0 10px;
-    margin: 0px;
+    padding: 2.15rem 0 0.7rem;
+    margin: 0;
     text-transform: uppercase;
 }
 
 html body input[type='text'] {
     margin: 0;
-    font-size: 18px;
-    line-height: 18px;
-    height: 18px;
-    padding: 10px;
+    font-size: 1.28rem;
+    line-height: 1.28rem;
+    height: 1.28rem;
+    padding: 0.7rem;
     border: 1px solid #ddd;
     background: #fff;
-    border-radius: 6px;
+    border-radius: 0.4rem;
     font-family: Lato, sans-serif;
     color: #888;
 }
@@ -84,16 +87,25 @@ html body input[type='text']:focus {
 
 /* New Task */
 html body input#new-task {
-    float: left;
-    width: 318px;
+    width: 54.5%;
 }
 
-html body p>button:hover {
+header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header > label {
+    width: 100%;
+}
+html body header>button:hover {
     color: #0fc57c;
 }
 
 /* Task list */
 html body li {
+    display: flex;
+    align-items: center;
     overflow: hidden;
     padding: 20px 0px;
     border-bottom: 1px solid #eee;
@@ -106,17 +118,19 @@ html body li input[type='checkbox'] {
 html body li>label {
     display: flex;
     align-items: center;
-    font-size: 18px;
-    line-height: 40px;
-    width: 271px;
-    padding: 0 0 0 11px;
+    font-size: 1.28rem;
+    line-height: 2.85rem;
+    width: 50%;
+    max-width: 237px;
+    padding: 0 0 0 0.75rem;
 }
 
-html body li input[type='text'] {
-    width: 262px;
+html body li>input[type='text'] {
+    max-width: 226px;
+    width: 70%;
 }
 
-html body li>.delete :hover {
+html body li>.delete:hover {
     color: #cf2323;
 }
 
@@ -137,4 +151,21 @@ html body ul li.editMode input[type='text'] {
 
 html body ul li.editMode label {
     display: none;
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 10px;
+    }
+    .container {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
 }
