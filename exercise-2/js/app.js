@@ -4,7 +4,48 @@
   const incompleteTasksHolder = document.querySelector('#incomplete-tasks');
   const completedTasksHolder = document.querySelector('#completed-tasks');
 
-  const createNewTaskElement = (taskString, arr) => {
+  const serialize = () => {
+    const incompletedValues = [...incompleteTasksHolder.children].map(
+      (listItem) => listItem.children[0].innerText,
+    );
+
+    const completedValues = [...completedTasksHolder.children].map(
+      (listItem) => listItem.children[0].innerText,
+    );
+
+    const state = {
+      incompletedValues,
+      completedValues,
+    };
+
+    try {
+      localStorage.setItem('state', JSON.stringify(state));
+    } catch {
+      console.log("Can't save state");
+    }
+  };
+
+  const desserialize = () => {
+    const storedState = localStorage.getItem('state');
+    if (!storedState) {
+      return;
+    }
+
+    const { incompletedValues, completedValues } = JSON.parse(storedState);
+
+    incompleteTasksHolder.innerHTML = '';
+    completedTasksHolder.innerHTML = '';
+
+    incompletedValues.forEach((taskName) => {
+      addTask(null, taskName);
+    });
+
+    completedValues.forEach((taskName) => {
+      addTask(null, taskName, true);
+    });
+  };
+
+  const createNewTaskElement = (taskString, isCompleted) => {
     const listItem = document.createElement('li');
     const checkBox = document.createElement('input');
     const label = document.createElement('label');
@@ -13,6 +54,7 @@
     const deleteButton = document.createElement('button');
 
     checkBox.type = 'checkbox';
+    checkBox.checked = isCompleted;
 
     label.innerText = taskString;
     label.prepend(checkBox);
@@ -29,21 +71,26 @@
     return listItem;
   };
 
-  const addTask = function () {
-    const listItemName = taskInput.value;
+  const addTask = (event, withName, isCompleted) => {
+    const listItemName = withName || taskInput.value;
 
     if (!listItemName) {
       taskInput.placeholder = 'Add some task name';
       return;
     }
 
-    const newTask = createNewTaskElement(listItemName);
-    incompleteTasksHolder.append(newTask);
+    const newTask = createNewTaskElement(listItemName, isCompleted);
+
+    if (isCompleted) {
+      completedTasksHolder.append(newTask);
+    } else {
+      incompleteTasksHolder.append(newTask);
+    }
 
     bindTaskEvents(newTask);
 
     taskInput.value = '';
-    taskInput.placeholder = "";
+    taskInput.placeholder = '';
   };
 
   const editTask = (el) => () => {
@@ -70,7 +117,6 @@
   };
 
   const toggleCompletion = (el) => (e) => {
-    console.log(e.currentTarget);
     if (e.target.checked) {
       completedTasksHolder.append(el);
     } else {
@@ -90,11 +136,16 @@
 
   addButton.addEventListener('click', addTask);
 
-  [...incompleteTasksHolder.children].forEach((incompleteTask) => {
-    bindTaskEvents(incompleteTask);
-  });
+  document.addEventListener('DOMContentLoaded', () => {
+    desserialize();
+    setInterval(serialize, 1000);
 
-  [...completedTasksHolder.children].forEach((completedTask) => {
-    bindTaskEvents(completedTask);
-  })
+    [...incompleteTasksHolder.children].forEach((incompleteTask) => {
+      bindTaskEvents(incompleteTask);
+    });
+
+    [...completedTasksHolder.children].forEach((completedTask) => {
+      bindTaskEvents(completedTask);
+    });
+  });
 })();
