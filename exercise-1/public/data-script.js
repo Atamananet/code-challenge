@@ -1,5 +1,5 @@
 const apiUrl = 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment';
-const templateUrl = 'users-list.hbr';
+const templateUrl = 'users-list.handlebars';
 
 const renderHandlebarsTemplate = (withTemplate, inElement, withData) => {
   const template = Handlebars.compile(withTemplate);
@@ -13,9 +13,19 @@ const fetchTemplate = async (url) => {
   return await hbr.text();
 };
 
-const toggleFields = (fields) => (event) => {
+const toggleField = (event) => {
+  if (!event.target.classList.contains('btn-toggle')) {
+    return;
+  }
+
+  event.target.querySelectorAll('* + .addition');
+  const userListItem = event.target.closest('.user');
+  const additionFields = [...userListItem.querySelectorAll('.addition')];
+  additionFields.forEach(field => {
+    field.classList.toggle('hidden');
+  });
   event.target.classList.toggle('btn-toggle_clicked');
-  fields.forEach((element) => element.classList.toggle('hidden'));
+
 };
 
 const formatDate = (asString) => {
@@ -39,5 +49,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   const additionFields = document.querySelectorAll('.addition');
   const switcher = document.querySelector('.btn-toggle');
-  switcher.addEventListener('click', toggleFields(additionFields));
+
+  const usersList = document.querySelector('.users-container');
+  usersList.addEventListener('click', toggleField);
 });

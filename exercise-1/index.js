@@ -1,9 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const { HOST_NAME, PORT } = process.env;
 
 const server = http.createServer((req, res) => {
   const reqFile = req.url.substr(1) || 'index.html';
@@ -19,6 +19,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(PORT, HOST_NAME, () => {
+  console.log(`Server running at http://${HOST_NAME}:${PORT}/`);
 });

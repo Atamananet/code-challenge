@@ -4,11 +4,15 @@
   "description": "",
   "main": "data-script.js",
   "scripts": {
-    "test": "npx jasmine"
+    "test": "npx jasmine",
+    "start": "node index"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jasmine": "^3.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
   }
 }
