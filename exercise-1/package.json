@@ -4,15 +4,16 @@
   "description": "",
   "main": "data-script.js",
   "scripts": {
-    "test": "npx jasmine",
+    "test": "npx jest --env=jsdom",
     "start": "node index"
   },
-  "author": "",
+  "author": "Vladimir Storozhenko",
   "license": "ISC",
   "devDependencies": {
-    "jasmine": "^3.7.0"
+    "jest": "^27.0.4"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "jsdom": "^16.6.0"
   }
 }

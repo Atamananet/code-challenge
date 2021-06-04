@@ -47,9 +47,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   const template = await fetchTemplate(templateUrl);
   renderHandlebarsTemplate(template, '#users-list', { users });
 
-  const additionFields = document.querySelectorAll('.addition');
-  const switcher = document.querySelector('.btn-toggle');
-
   const usersList = document.querySelector('.users-container');
   usersList.addEventListener('click', toggleField);
 });
+
+module.exports = { normalizeUsers, toggleField }
