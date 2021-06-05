@@ -21,7 +21,7 @@ npm run test
 
 # Task #2
 
-To run the application just follow the [link]('https://atamananet-exercise-2.netlify.app/') or open `index.html` in a browser. 
+To run the application just follow the [link](https://atamananet-exercise-2.netlify.app/) or open `index.html` in a browser. 
 
 <hr>
 <br>
