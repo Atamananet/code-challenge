@@ -21,27 +21,6 @@ const users = [
   },
 ];
 
-formatedUsers = [
-  {
-    id: '14',
-    name: 'Tina White',
-    avatar: '',
-    createdAt: '31.03.2021, 18:59:27',
-  },
-  {
-    id: '15',
-    name: 'Allen Durgan',
-    avatar: '',
-    createdAt: '31.03.2021, 13:02:15',
-  },
-  {
-    id: '16',
-    name: 'Ryann Wiegand',
-    avatar: '',
-    createdAt: '31.03.2021, 16:24:14',
-  },
-];
-
 test('normalizes users data', () => {
   expect(normalizeUsers).toThrow();
   expect(normalizeUsers.bind(null, users)).not.toThrow();

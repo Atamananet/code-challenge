@@ -7,11 +7,11 @@
   const serialize = () => {
     const getInnerText = (node) => node.children[0].innerText;
     
-    const incompletedValues = [...incompleteTasksHolder.children].map(getInnerText);
+    const incompleteValues = [...incompleteTasksHolder.children].map(getInnerText);
     const completedValues = [...completedTasksHolder.children].map(getInnerText);
 
     const state = {
-      incompletedValues,
+      incompleteValues,
       completedValues,
     };
 
@@ -28,12 +28,12 @@
       return;
     }
 
-    const { incompletedValues, completedValues } = JSON.parse(storedState);
+    const { incompleteValues, completedValues } = JSON.parse(storedState);
 
     incompleteTasksHolder.innerHTML = '';
     completedTasksHolder.innerHTML = '';
 
-    incompletedValues.forEach((taskName) => {
+    incompleteValues.forEach((taskName) => {
       addTask(null, taskName);
     });
 
