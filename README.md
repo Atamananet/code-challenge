@@ -8,6 +8,15 @@ npm install
 
 ## Running
 
+Add `.env` file to the root of application and add `HOST_NAME` and `PORT` variables:
+
+```bash
+HOST_NAME=localhost
+PORT=3000
+```
+
+run
+
 ```bash
 npm start
 ```
